@@ -78,6 +78,7 @@ function main(params) {
     { name: "Global", type: "select", proxies: ["Proxy", "Auto", "Balance", "Fallback", ...regions.map(r => r.name)], icon: "Global.png" },
     { name: "Mainland", type: "select", proxies: ["DIRECT", "Proxy", "Auto", "Balance", "Fallback", ...regions.map(r => r.name)], icon: "Direct.png" },
     { name: "GPT", type: "select", proxies: ["America", "Japan", "Singapore", "TaiWan", "Others", "Proxy"], icon: "AI.png" },
+    { name: "Spotify", type: "select", proxies: ["DIRECT", "Proxy", "Auto", "Balance", "Fallback", ...regions.map(r => r.name)], icon: "Spotify.png" },
     { name: "YouTube", type: "select", proxies: ["Proxy", "Auto", "Balance", "Fallback", ...regions.map(r => r.name)], icon: "YouTube.png" },
     { name: "BiliBili", type: "select", proxies: ["DIRECT", "HongKong", "TaiWan"], icon: "bilibili.png" },
     { name: "Streaming", type: "select", proxies: ["Proxy", "Auto", "Balance", "Fallback", ...regions.map(r => r.name)], icon: "ForeignMedia.png" },
@@ -97,6 +98,7 @@ function main(params) {
     ["private", "DIRECT"],
     ["openai", "GPT"],
     ["google-gemini", "GPT"],
+    ["spotify", "Spotify"],
     ["games-cn", "Mainland"],
     ["games", "Games"],
     ["github", "Global"],
@@ -123,7 +125,10 @@ function main(params) {
     "AND,(AND,(DST-PORT,443),(NETWORK,UDP)),(NOT,((GEOIP,CN,no-resolve))),REJECT", // QUIC
     ...domainRules,
     telegramIpRule,
-    "GEOIP,CN,Mainland,no-resolve", // 保留 GEOIP CN 作为兜底
+    "GEOIP,Private,DIRECT,no-resolve",
+    "GEOIP,Telegram,Telegram,no-resolve",
+    "GEOIP,JP,Japan,no-resolve",
+    "GEOIP,CN,DIRECT,no-resolve", // 保留 GEOIP CN 作为兜底
     "MATCH,Final"
   ];
 

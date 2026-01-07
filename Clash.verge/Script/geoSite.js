@@ -75,6 +75,7 @@ function main(params) {
     { name: "Global", type: "select", proxies: ["Proxy", "Auto", "Balance", "Fallback", ...regions.map(r => r.name)], icon: "Global.png" },
     { name: "Mainland", type: "select", proxies: ["DIRECT", "Proxy", "Auto", "Balance", "Fallback", ...regions.map(r => r.name)], icon: "Direct.png" },
     { name: "GPT", type: "select", proxies: ["America", "Japan", "Singapore", "TaiWan", "Others", "Proxy"], icon: "AI.png" },
+    { name: "Spotify", type: "select", proxies: ["DIRECT", "Proxy", "Auto", "Balance", "Fallback", ...regions.map(r => r.name)], icon: "Spotify.png" },
     { name: "YouTube", type: "select", proxies: ["Proxy", "Auto", "Balance", "Fallback", ...regions.map(r => r.name)], icon: "YouTube.png" },
     { name: "BiliBili", type: "select", proxies: ["DIRECT", "HongKong", "TaiWan"], icon: "bilibili.png" },
     { name: "Streaming", type: "select", proxies: ["Proxy", "Auto", "Balance", "Fallback", ...regions.map(r => r.name)], icon: "ForeignMedia.png" },
@@ -98,7 +99,7 @@ function main(params) {
     "GEOSITE,Category-games@cn,Mainland",
     "GEOSITE,Category-games,Games",
     "GEOSITE,Github,Global",
-    "GEOIP,Telegram,Telegram,no-resolve",
+    "GEOSITE,Spotify,Spotify",
     "GEOSITE,Bilibili,BiliBili",
     "GEOSITE,Youtube,YouTube",
     "GEOSITE,Disney,Streaming",
@@ -110,7 +111,10 @@ function main(params) {
     "GEOSITE,Apple@cn,Mainland",
     "GEOSITE,Geolocation-!cn,Global",
     "GEOSITE,CN,Mainland",
-    "GEOIP,CN,Mainland,no-resolve",
+    "GEOIP,Private,DIRECT,no-resolve",
+    "GEOIP,Telegram,Telegram,no-resolve",
+    "GEOIP,JP,Japan,no-resolve",
+    "GEOIP,CN,DIRECT,no-resolve",
     "MATCH,Final"
   ];
 
